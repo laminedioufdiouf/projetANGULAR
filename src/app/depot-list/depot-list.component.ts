@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+import { DepotService } from '../depot.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
+
+@Component({
+  selector: 'app-depot-list',
+  templateUrl: './depot-list.component.html',
+  styleUrls: ['./depot-list.component.scss']
+})
+export class DepotListComponent implements OnInit {
+
+  public depot=[];
+
+  constructor(private _depService: DepotService, private _router:Router) { }
+
+  ngOnInit() {
+
+    this._depService.getDepot()
+
+    .subscribe(
+
+      res => this.depot= res,
+      err => {
+        console.log(this.depot)
+        if (err instanceof HttpErrorResponse){
+          if(err.status === 401){
+            this._router.navigate(['/login'])
+          }
+        }
+      }
+    )
+  }
+
+}

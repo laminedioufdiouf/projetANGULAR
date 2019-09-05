@@ -1,0 +1,86 @@
+<div class="py-5">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formregister"></span>
+      
+            <!-- form card register -->
+            <div class="card rounded-0">
+              <div class="card-header">
+                <h3 class="mb-0">ajouter Partenaire</h3>
+              </div>
+              <div class="card-body">
+        <form  #f="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputNinea4">Ninea</label>
+                    <input [(ngModel)]="registerUserData.ninea" name="ninea" type="number" class="form-control" id="inputNinea4" placeholder="Ninea" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputRaisonsociale4">Raisonsociale</label>
+                    <input [(ngModel)]="registerUserData.raisonsociale" name="raisonsociale" type="text" class="form-control" id="inputRaisonsociale4" placeholder="Raisonsociale" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAdress4">Adress</label>
+                    <input [(ngModel)]="registerUserData.adress" name="adress" type="text" class="form-control" id="inputAdress4" placeholder="Adress" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputStatut4">Statut</label>
+                    <input [(ngModel)]="registerUserData.statut" name="statut" type="text" class="form-control" id="inputStatut4" placeholder="Statut" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputMontant4">Montant</label>
+                    <input [(ngModel)]="registerUserData.montant" name="montant" type="number" class="form-control" id="inputMontant4" placeholder="Montant" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputDatedepot4">Datedepot</label>
+                    <input [(ngModel)]="registerUserData.datedepot" name="datedepot" type="datetime" class="form-control" id="inputDatedepot4" placeholder="Datedepot" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSolde4">Solde</label>
+                    <input [(ngModel)]="registerUserData.solde" name="solde" type="number" class="form-control" id="inputSolde4" placeholder="Solde" required>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="inputUsername4">Username</label>
+                  <input [(ngModel)]="registerUserData.username" name="username" type="username" class="form-control" id="inputUsername4" placeholder="Username" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control" id="inputPassword4" placeholder="Password" required>
+              </div>
+                <div class="form-group col-md-6">
+                        <label for="inputProfil4">Profil</label>
+                        <input [(ngModel)]="registerUserData.profil" name="profil"type="profil" class="form-control" id="inputProfil4" placeholder="Profil" required>
+                  </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputNom4">Nom</label>
+                        <input [(ngModel)]="registerUserData.nom" name="nom" type="nom" class="form-control" id="inputNom4" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputAdresse4">Adresse</label>
+                        <input [(ngModel)]="registerUserData.adresse" name="adresse" type="text" class="form-control" id="inputAdresse4" placeholder="Adresse" required>
+                      </div>
+                    
+                    <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                            <label for="inputTelephone4">Telephone</label>
+                            <input [(ngModel)]="registerUserData.telephone" name="telephone" type="telephone" class="form-control" id="inputTelephone4" placeholder="Telephone" required>
+                      </div>  
+                
+                </div>
+              
+                <button  (click)="registerUser()" type="submit" class="btn btn-primary float-left">register</button>
+                <button  (click)="registerUser()" type="submit" class="btn btn-danger float-right" >annuler</button>
+            </form>
+        </div>
+        <!--/card-block-->
+      </div>
+      <!-- /form card register -->
+
+    </div>
+
+
+  </div>
+</div>

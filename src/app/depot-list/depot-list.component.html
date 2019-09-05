@@ -1,0 +1,23 @@
+<div class="box-body"> 
+    <table id="example2" class="table table-bordered table-hover">
+      <thead class="btable">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Datedepot</th>
+        <th scope="col">Solde</th>
+        <th scope="col">Compte_id</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let depot of depot">
+          <td>{{ depot.id }}</td>
+          <td>{{ depot.datedepot }}</td>
+          <td>{{ depot.solde }}</td>
+          <td>{{ depot.compte }}</td>  
+      </tr>
+      </tbody>
+      
+    </table>
+</div> 
+
+
