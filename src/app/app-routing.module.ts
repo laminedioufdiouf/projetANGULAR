@@ -8,12 +8,14 @@ import { PartenaireListComponent } from './partenaire-list/partenaire-list.compo
 import { AjoutUsersComponent } from './ajout-users/ajout-users.component';
 import { DepotComponent } from './depot/depot.component';
 import { DepotListComponent } from './depot-list/depot-list.component';
+import { CompteListComponent } from './compte-list/compte-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: '/',
     pathMatch: 'full'
   },
   
@@ -36,9 +38,21 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
+    path: 'user-list',
+    
+    component:UserListComponent,
+    canActivate:[AuthGuard]
+  },
+  {
     path: 'depot-list',
     
     component:DepotListComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'compte-list',
+    
+    component:CompteListComponent,
     canActivate:[AuthGuard]
   },
   {

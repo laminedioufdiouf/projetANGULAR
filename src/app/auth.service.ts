@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router'
 
 
@@ -12,10 +13,13 @@ export class AuthService {
   private _depotUrl = "http://localhost:8000/api/Depot";
   private _ajoutUsersUrl = "http://localhost:8000/api/User";
   private _partenairelistUrl = "http://localhost:8000/api/partenaire";
+  private _userlistUrl = "http://localhost:8000/api/user";
   private _depotlistUrl = "http://localhost:8000/api/depot";
+  private _comptelistUrl = "http://localhost:8000/api/compte";
+  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
   jwt:string;
   username:string;
-  roles:Array<string>;
+  roles:any;
 
   constructor(private http: HttpClient,
               private _router: Router) {localStorage.getItem("Token"); }
@@ -37,11 +41,12 @@ export class AuthService {
     formData.append("adresse",user.adresse)
     formData.append("email",user.email)
     formData.append("telephone",user.telephone)
-  return this.http.post<any>(this._registerUrl,formData, user)
+  return this.http.post<any>(this._registerUrl,formData,{headers:this.headers,observe:'response'})
 
   }
   ajoutUsersUser(user) {
-    return this.http.post<any>(this._ajoutUsersUrl, user)
+    return this.http.post<any>(this._ajoutUsersUrl,user, {headers:this.headers,observe:'response'})
+    
   }
 
   loginUser(data) {
@@ -53,30 +58,41 @@ export class AuthService {
     const formData= new FormData();
     formData.append("montant",user.montant)
 
-    return this.http.post<any>(this._compteUrl, user)
+    return this.http.post<any>(this._compteUrl, user,{headers:this.headers,observe:'response'})
     
 
   }
   depotUrl(user) {
-
+ 
     const formData= new FormData();
 
     formData.append("datedepot",user.datedepot)
     formData.append("solde",user.solde)
 
-    return this.http.post<any>(this._depotUrl, user)
+    return this.http.post<any>(this._depotUrl, user ,{headers:this.headers,observe:'response'})
   }
   partenairelistUser(user) {
-    return this.http.post<any>(this._partenairelistUrl, user)
+    return this.http.post<any>(this._partenairelistUrl, user,{headers:this.headers,observe:'response'})
+  }
+  userlistUser(user) {
+    return this.http.post<any>(this._userlistUrl, user ,{headers:this.headers,observe:'response'})
   }
   depotlistUser(user) {
-    return this.http.post<any>(this._depotlistUrl, user)
+    return this.http.post<any>(this._depotlistUrl, user ,{headers:this.headers,observe:'response'})
+  }
+  comptelistUser(user) {
+    return this.http.post<any>(this._comptelistUrl, user ,{headers:this.headers,observe:'response'})
   }
 
   logoutUser() {
     localStorage.removeItem('token')
     this._router.navigate(['/'])
   }
+  
+/* LogOut() {
+    localStorage.removeItem('token');
+      this.initParam();
+  } */
 
   getToken() {
     return localStorage.getItem('token')
@@ -95,22 +111,31 @@ export class AuthService {
   }
 
  parseJWT(){
-    /*let jwtHelper=new JwtHeService();
+    let jwtHelper=new JwtHelperService(this.jwt);
     let objJWT=jwtHelper.decodeToken(this.jwt);
-    this.username=objJWT.obj;
-    this.roles=objJWT.roles;*/
+    this.username=objJWT.username;
+    localStorage.setItem('username',this.username)
+    this.roles=objJWT.roles;
+    localStorage.setItem('roles',this.roles)
   }
 
-  /*isAdmin(){
-    return this.roles.indexOf('ADMIN')>=0;
+  isSuperAdmin(){
+    return this.roles.indexOf('ROLE_SUPER_ADMIN')>=0;
+  }
+  isAdminPartenaire(){
+    return this.roles.indexOf('ROLE_ADMIN_PARTENAIRE')>=0;
   }
   isUser(){
-    return this.roles.indexOf('User')>=0;
-  }*/
-
-  isAuthed(){
-    return this.roles;
+    return this.roles.indexOf('ROLE_USER')>=0;
   }
-
-  
+  /* isCaissier(){
+    return this.roles.indexOf('ROLE_CAISSIER')>=0;
+  }
+  isAdminSimple(){
+    return this.roles.indexOf('ROLE_ADMIN_SIMPLE')>=0;
+  }
+ */
+  isAuthed(){
+    return this.roles && (this.isSuperAdmin() || this.isAdminPartenaire() || this.isUser());
+  }
 }

@@ -20,6 +20,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { DepotComponent } from './depot/depot.component';
 import { DepotListComponent } from './depot-list/depot-list.component';
 import { DepotService } from './depot.service';
+import { CompteListComponent } from './compte-list/compte-list.component';
 
 
 
@@ -34,7 +35,8 @@ import { DepotService } from './depot.service';
     AjoutUsersComponent,
     UserListComponent,
     DepotComponent,
-    DepotListComponent
+    DepotListComponent,
+    CompteListComponent
   ],
   imports: [
     BrowserModule,

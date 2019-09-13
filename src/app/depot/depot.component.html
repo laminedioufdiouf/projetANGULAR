@@ -1,14 +1,14 @@
 <div class="py-5">
         <div class="row">
-          <div class="col-md-6 mx-auto">
+          <div class="col-md-5">
             <span class="anchor" id="formcompte"></span>
       
             <!-- form card compte -->
-            <div class="card rounded-0">
+            <div class="card rounded-0" style="background-color: #e9e9e9">
               <div class="card-header">
-                <h2 class="mb-0" class="text-align-center">Faire un depot</h2>
+                <h2 class="mb-0" style="text-align: center">Faire un depot</h2>
               </div>
-              <div class="card-body">
+              <div class="card-body" >
                 <form class="form">
                   <div class="form-group">
                     <label for="">datedepot</label>
@@ -19,15 +19,20 @@
                     <input [(ngModel)]="depotUserData.solde" name="solde" type="number" class="form-control rounded-0" placeholder="solde" required>
                   </div>
                   <button (click)="depotUser()" type="button" class="btn btn-success float-left">valider</button>
-                  <button (click)="qnnulerUser()" type="button" class="btn btn-danger float-right">annuler</button>
+                  <button (click)="annulerUser()" type="button" class="btn btn-danger float-right">annuler</button>
                 </form>
               </div>
               <!--/card-block-->
+            </div>
+            <div>
+
             </div>
             <!-- /form card compte -->
       
           </div>
       
-      
+          <div class="col-md-7">
+             <app-depot-list></app-depot-list>
+          </div>
         </div>
       </div>

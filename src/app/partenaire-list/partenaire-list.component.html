@@ -1,8 +1,9 @@
 
 
 <div class="box-body"> 
+    <h1 style="text-align: center;color:blue;">Liste des Partenaires</h1>
     <table id="example2" class="table table-bordered table-hover">
-      <thead class="btable">
+      <thead class="btable" style="background-color: rgb(84, 217, 221)">
       <tr>
           <th scope="col">id</th>
         <th scope="col">Ninea</th>
@@ -11,13 +12,13 @@
         <th scope="col">Statut</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr *ngFor="let partenaire of partenaire" >
-          <td>{{ partenaire.id }}</td>
-          <td>{{ partenaire.ninea }}</td>
-          <td>{{ partenaire.raisonsociale }}</td>
-          <td>{{ partenaire.adress }}</td>
-          <td>{{ partenaire.statut }}</td>  
+          <td >{{ partenaire.id }}</td>
+          <td >{{ partenaire.ninea }}</td>
+          <td >{{ partenaire.raisonsociale }}</td>
+          <td >{{ partenaire.adress }}</td>
+          <td >{{ partenaire.statut }}</td>  
       </tr>
       </tbody>
     </table>

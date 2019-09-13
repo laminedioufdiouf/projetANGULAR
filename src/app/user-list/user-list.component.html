@@ -1,1 +1,29 @@
-<p>user-list works!</p>
+<div class="box-body"> 
+    <h1 style="text-align: center; color: blue">Liste des users</h1>
+    <table id="example2" class="table table-bordered table-hover">
+      <thead class="btable" style="background-color: rgb(84, 217, 221)">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Roles</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telephone</th> 
+        <th scope="col">Profil</th>          
+      </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let user of user" >         
+          <td >{{ user.username }}</td>
+          <td >{{ user.roles }}</td>
+          <td >{{ user.nom }}</td> 
+          <td >{{ user.adresse }}</td> 
+          <td >{{ user.email }}</td> 
+          <td >{{ user.telephone }}</td>  
+          <td >{{ user.profil }}</td>       
+      </tr>
+      </tbody>
+    </table>
+</div> 
+
+

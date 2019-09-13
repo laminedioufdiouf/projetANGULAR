@@ -21,7 +21,7 @@ export class AjoutUsersComponent implements OnInit {
     this._auth.ajoutUsersUser(this.ajoutUsersUserData)
     .subscribe(
       res => {
-        localStorage.setItem('token', res.token)
+        
         this._router.navigate(['/'])
       },
       err => console.log(err)

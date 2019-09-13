@@ -6,19 +6,32 @@ import { AuthService } from './auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  {
+export class AppComponent  implements OnInit {
 
- 
   title = 'ngApp';
+  
+  
 
 constructor(private _auth:AuthService){}
 
-/*isAdmin(){
-    return this._auth.isAdmin();
+ngOnInit() {
+}
+
+isSuperAdmin(){
+    return this._auth.isSuperAdmin();
+  }
+  isAdminPartenaire(){
+    return this._auth.isAdminPartenaire();
   }
   isUser(){
     return this._auth.isUser();
-  }*/
+  }
+ /*  isCaissier(){
+    return this._auth.isCaissier();
+  }
+  isAdminSimple(){
+    return this._auth.isAdminSimple();
+  } */
 
   isAuthed(){
     return this._auth.isAuthed();

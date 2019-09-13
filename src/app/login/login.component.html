@@ -1,15 +1,16 @@
-<div class="py-5">
+    <h2  style="text-align: center">NAFA</h2>
+<div class="py-2" >
         <div class="row">
-          <div class="col-md-6 mx-auto">
+          <div class="col-md-6 mx-auto" >
             <span class="anchor" id="formLogin"></span>
       
             <!-- form card login -->
-            <div class="card rounded-0">
+            <div class="card rounded-0" style="background-color: #cccccc">
               <div class="card-header">
-                <h3 class="mb-0">Login</h3>
+                <h3 class="mb-0" style="text-align: center">Login</h3>
               </div>
               <div class="card-body">
-                <form class="form">
+                <form class="form" autocomplete="off">
                   <div class="form-group">
                     <label for="">Username</label>
                     <input  [(ngModel)]="loginUserData.username" name="username" type="text" class="form-control rounded-0" required>
@@ -18,7 +19,7 @@
                     <label>Password</label>
                     <input [(ngModel)]="loginUserData.password" name="password" type="password" class="form-control rounded-0" required>
                   </div>
-                  <button (click)="loginUser()" type="button" class="btn btn-success float-right">Login</button>
+                  <button (click)="loginUser()" type="button" class="btn btn-success float-right mt-2">Login</button>
                 </form>
               </div>
               <!--/card-block-->

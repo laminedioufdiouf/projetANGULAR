@@ -27,17 +27,26 @@ export class LoginComponent implements OnInit {
         let jwt=res.body['token']
         /*localStorage.setItem('token', jwt)*/
         this._auth.saveToken(jwt);
-        this._router.navigate(['/register'])
+        this._router.navigate(['/'])
       },
       err => console.log(err)
     ) 
   }
- /* isAdmin(){
-    return this._auth.isAdmin();
+  isSuperAdmin(){
+    return this._auth.isSuperAdmin();
+  }
+  isAdminPartenaire(){
+    return this._auth.isAdminPartenaire();
   }
   isUser(){
     return this._auth.isUser();
-  }*/
+  }
+  /* isCaissier(){
+    return this._auth.isCaissier();
+  }
+  isAdminSimple(){
+    return this._auth.isAdminSimple();
+  } */
 
 }
 

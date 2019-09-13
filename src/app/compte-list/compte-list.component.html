@@ -1,0 +1,22 @@
+<div class="box-body"> 
+        <h1 style="text-align: center;color: blue">Liste des comptes</h1>
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="btable" style="background-color: rgb(84, 217, 221)">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Numerocompte</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Partenaire_id</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let compte of compte">
+              <td>{{ compte.id }}</td>
+              <td>{{ compte.numerocompte }}</td>
+              <td>{{ compte.montant }}</td>
+              <td>{{ compte.partenaire }}</td>  
+          </tr>
+          </tbody>
+          
+        </table>
+    </div> 
