@@ -21,7 +21,7 @@ import { DepotComponent } from './depot/depot.component';
 import { DepotListComponent } from './depot-list/depot-list.component';
 import { DepotService } from './depot.service';
 import { CompteListComponent } from './compte-list/compte-list.component';
-
+import { MaterialModule} from './material/material.module';
 
 
 @NgModule({
@@ -43,6 +43,7 @@ import { CompteListComponent } from './compte-list/compte-list.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MaterialModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],

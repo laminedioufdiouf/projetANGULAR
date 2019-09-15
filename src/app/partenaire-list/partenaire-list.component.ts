@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { PartenaireService } from '../partenaire.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-partenaire-list',
@@ -11,6 +13,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PartenaireListComponent implements OnInit {
 
   public partenaire =[];
+  dataSource:any;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private _partService: PartenaireService, private _router:Router) {}
 
@@ -20,7 +24,11 @@ export class PartenaireListComponent implements OnInit {
 
     .subscribe(
 
-      res => this.partenaire = res,
+      res => {this.partenaire = res
+
+        this.dataSource = new MatTableDataSource(this.partenaire);
+      this.dataSource.paginator = this.paginator;
+      },
       err => {
         console.log(this.partenaire)
         if (err instanceof HttpErrorResponse){
@@ -31,5 +39,9 @@ export class PartenaireListComponent implements OnInit {
       }
     )
   }
-
+  displayedColumns: string[] = ['id', 'ninea', 'raisonsociale', 'adress','statut'];
+  
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

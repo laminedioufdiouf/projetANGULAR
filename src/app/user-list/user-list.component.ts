@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../user.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-user-list',
@@ -11,6 +14,9 @@ import { UserService } from '../user.service';
 export class UserListComponent implements OnInit {
 
   public user =[];
+
+  dataSource:any;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private _partService: UserService, private _router:Router) { }
 
   ngOnInit() {
@@ -20,7 +26,11 @@ export class UserListComponent implements OnInit {
 
     .subscribe(
 
-      res => this.user = res,
+      res => { this.user = res,
+
+        this.dataSource = new MatTableDataSource(this.user);
+        this.dataSource.paginator = this.paginator;
+      },
       err => {
         console.log(this.user)
         if (err instanceof HttpErrorResponse){
@@ -30,6 +40,10 @@ export class UserListComponent implements OnInit {
         }
       }
     )
+  }
+  displayedColumns: string[] = ['username', 'roles', 'nom', 'adresse', 'email'];
+  applyFilter(filterValue: string) {
+  this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
